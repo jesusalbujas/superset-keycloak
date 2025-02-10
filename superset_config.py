@@ -1,7 +1,7 @@
 import os
 import logging
 from dotenv import load_dotenv
-from flask_appbuilder.security.manager import AUTH_OID
+from flask_appbuilder.security.manager import AUTH_OAUTH
 
 # Configurar logging para depuración
 logging.basicConfig(level=logging.DEBUG)
@@ -11,7 +11,7 @@ load_dotenv()
 SECRET_KEY = os.getenv('SUPERSET_SECRET_KEY', 'default-secret-key')
 
 # Habilitar OAuth
-AUTH_TYPE = AUTH_OID
+AUTH_TYPE = AUTH_OAUTH
 LOGOUT_REDIRECT_URL = f"{os.getenv('KEYCLOAK_SERVER')}/realms/{os.getenv('KEYCLOAK_REALM')}/protocol/openid-connect/logout"
 AUTH_USER_REGISTRATION = True
 AUTH_ROLES_SYNC_AT_LOGIN = True
